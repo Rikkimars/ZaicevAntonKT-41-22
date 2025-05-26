@@ -7,6 +7,7 @@ public class Department
     public int Id { get; set; } // Первичный ключ
 
     public string Name { get; set; } = null!; // Название кафедры
+    public DateTime FoundationDate { get; set; }
 
     // Связь "один-к-одному" с заведующим кафедрой
     public int HeadOfDepartmentId { get; set; }

@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using NLog;
 using NLog.Web;
 using ZaicevAntonKt_41_22.Database;
+using ZaicevAntonKt_41_22.Interfaces;
+using ZaicevAntonKt_41_22.Services;
 
 var builder = WebApplication.CreateBuilder(args);   
 
@@ -18,6 +20,15 @@ try
 
     builder.Services.AddDbContext<PrepodDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+    builder.Services.AddScoped<IDepartmentService, DepartmentService>();
+    builder.Services.AddScoped<ITeacherService, TeacherService>();
+    builder.Services.AddScoped<IAcademicDegreeService, AcademicDegreeService>();
+    builder.Services.AddScoped<IPositionService, PositionService>();
+    builder.Services.AddScoped<IDisciplineService, DisciplineService>();
+    builder.Services.AddScoped<IWorkloadService, WorkloadService>();
+   
+   
 
     var app = builder.Build();
     
