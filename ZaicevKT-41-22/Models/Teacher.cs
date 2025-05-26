@@ -9,7 +9,7 @@ public class Teacher
     public string Name { get; set; } = null!; // Имя преподавателя
 
     // Связь "многие-к-одному" с кафедрой
-    public int DepartmentId { get; set; }
+    public int? DepartmentId { get; set; }
     public Department Department { get; set; } = null!;
 
     // Связь "многие-к-одному" с учёной степенью

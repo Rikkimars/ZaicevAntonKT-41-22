@@ -4,6 +4,7 @@ using NLog.Web;
 using ZaicevAntonKt_41_22.Database;
 using ZaicevAntonKt_41_22.Interfaces;
 using ZaicevAntonKt_41_22.Services;
+using ZaicevKT_41_22.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);   
 

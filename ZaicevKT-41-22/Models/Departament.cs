@@ -10,8 +10,8 @@ public class Department
     public DateTime FoundationDate { get; set; }
 
     // Связь "один-к-одному" с заведующим кафедрой
-    public int HeadOfDepartmentId { get; set; }
-    public Teacher HeadOfDepartment { get; set; } = null!;
+    public int? HeadOfDepartmentId { get; set; }
+    public Teacher? HeadOfDepartment { get; set; }
 
     // Связь "один-ко-многим" с преподавателями
     public ICollection<Teacher> Teachers { get; set; } = new List<Teacher>();

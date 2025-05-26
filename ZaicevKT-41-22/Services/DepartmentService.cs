@@ -3,10 +3,10 @@ using ZaicevAntonKt_41_22.Database;
 using ZaicevAntonKt_41_22.DTO;
 using ZaicevAntonKt_41_22.Filters;
 using ZaicevAntonKt_41_22.Interfaces;
+using ZaicevAntonKt_41_22.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ZaicevAntonKt_41_22.Models;
 
 namespace ZaicevAntonKt_41_22.Services
 {
@@ -66,7 +66,7 @@ namespace ZaicevAntonKt_41_22.Services
             {
                 Name = departmentDto.Name,
                 FoundationDate = departmentDto.FoundationDate,
-                HeadOfDepartmentId = departmentDto.HeadOfDepartmentId
+                HeadOfDepartmentId = departmentDto.HeadOfDepartmentId // int? → int? — корректно
             };
 
             _context.Departments.Add(department);

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -56,6 +57,7 @@ namespace ZaicevKT_41_22.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    FoundationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     HeadOfDepartmentId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
