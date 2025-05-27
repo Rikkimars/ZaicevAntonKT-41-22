@@ -23,6 +23,9 @@ namespace ZaicevAntonKt_41_22.Services
         {
             var query = _context.Teachers.AsQueryable();
 
+            if (!string.IsNullOrEmpty(filter.Name))
+                query = query.Where(t => t.Name.Contains(filter.Name));
+
             if (filter.DepartmentId.HasValue)
                 query = query.Where(t => t.DepartmentId == filter.DepartmentId.Value);
 
@@ -43,6 +46,7 @@ namespace ZaicevAntonKt_41_22.Services
                 })
                 .ToListAsync();
         }
+
 
         public async Task<TeacherDto> GetTeacherByIdAsync(int id)
         {

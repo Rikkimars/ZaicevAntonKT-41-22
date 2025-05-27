@@ -42,6 +42,12 @@ try
     app.UseMiddleware<ExceptionHandlerMiddleware>();
     app.UseAuthentication();
     app.MapControllers();
+    using (var scope = app.Services.CreateScope())
+    {
+        var context = scope.ServiceProvider.GetRequiredService<PrepodDbContext>();
+        DatabaseSeeder.Seed(context);
+    }
+
     app.Run();
 
 }

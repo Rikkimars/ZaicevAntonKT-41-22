@@ -23,6 +23,10 @@ namespace ZaicevAntonKt_41_22.Services
         {
             var query = _context.Departments.AsQueryable();
 
+            // ✅ Добавлена фильтрация по имени кафедры
+            if (!string.IsNullOrEmpty(filter.Name))
+                query = query.Where(d => d.Name.Contains(filter.Name));
+
             if (filter.FoundationDateFrom.HasValue)
                 query = query.Where(d => d.FoundationDate >= filter.FoundationDateFrom.Value);
 
