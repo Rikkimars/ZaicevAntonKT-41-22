@@ -21,7 +21,9 @@ namespace ZaicevAntonKt_41_22.Services
 
         public async Task<IEnumerable<DepartmentDto>> GetDepartmentsAsync(DepartmentFilter filter)
         {
-            var query = _context.Departments.AsQueryable();
+            var query = _context.Departments
+             .Include(d => d.HeadOfDepartment) 
+             .AsQueryable();
 
             // ✅ Добавлена фильтрация по имени кафедры
             if (!string.IsNullOrEmpty(filter.Name))
@@ -45,8 +47,10 @@ namespace ZaicevAntonKt_41_22.Services
                     Id = d.Id,
                     Name = d.Name,
                     FoundationDate = d.FoundationDate,
-                    HeadOfDepartmentId = d.HeadOfDepartmentId
+                    HeadOfDepartmentId = d.HeadOfDepartmentId,
+                    HeadOfDepartmentName = d.HeadOfDepartment.Name // ⬅️ ДОБАВЬ ЭТО
                 })
+
                 .ToListAsync();
         }
 

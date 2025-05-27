@@ -6,5 +6,6 @@
         public string Name { get; set; } = null!;
         public DateTime FoundationDate { get; set; }
         public int? HeadOfDepartmentId { get; set; }
+        public string? HeadOfDepartmentName { get; set; }
     }
 }

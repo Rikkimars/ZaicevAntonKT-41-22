@@ -9,6 +9,7 @@ public class Department
     public string Name { get; set; } = null!; // Название кафедры
     public DateTime FoundationDate { get; set; }
 
+
     // Связь "один-к-одному" с заведующим кафедрой
     public int? HeadOfDepartmentId { get; set; }
     public Teacher? HeadOfDepartment { get; set; }

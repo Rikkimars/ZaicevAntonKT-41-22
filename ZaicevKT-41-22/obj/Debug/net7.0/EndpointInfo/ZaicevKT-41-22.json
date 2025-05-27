@@ -1356,6 +1356,10 @@
             "type": "integer",
             "format": "int32",
             "nullable": true
+          },
+          "headOfDepartmentName": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -1433,6 +1437,18 @@
           "disciplineId": {
             "type": "integer",
             "format": "int32"
+          },
+          "teacherName": {
+            "type": "string",
+            "nullable": true
+          },
+          "departmentName": {
+            "type": "string",
+            "nullable": true
+          },
+          "disciplineName": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

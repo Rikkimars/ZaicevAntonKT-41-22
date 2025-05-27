@@ -21,7 +21,11 @@ namespace ZaicevAntonKt_41_22.Services
 
         public async Task<IEnumerable<WorkloadDto>> GetWorkloadsAsync(WorkloadFilter filter)
         {
-            var query = _context.Workloads.AsQueryable();
+            var query = _context.Workloads
+              .Include(w => w.Teacher)
+            .ThenInclude(t => t.Department)
+            .Include(w => w.Discipline)
+              .AsQueryable();
 
             if (filter.TeacherId.HasValue)
                 query = query.Where(w => w.TeacherId == filter.TeacherId.Value);
@@ -38,7 +42,10 @@ namespace ZaicevAntonKt_41_22.Services
                     Id = w.Id,
                     Hours = w.Hours,
                     TeacherId = w.TeacherId,
-                    DisciplineId = w.DisciplineId
+                    DisciplineId = w.DisciplineId,
+                    TeacherName = w.Teacher.Name,
+                    DepartmentName = w.Teacher.Department.Name,
+                    DisciplineName = w.Discipline.Name
                 })
                 .ToListAsync();
         }
@@ -46,15 +53,15 @@ namespace ZaicevAntonKt_41_22.Services
         public async Task<WorkloadDto> GetWorkloadByIdAsync(int id)
         {
             return await _context.Workloads
-                .Where(w => w.Id == id)
-                .Select(w => new WorkloadDto
-                {
-                    Id = w.Id,
-                    Hours = w.Hours,
-                    TeacherId = w.TeacherId,
-                    DisciplineId = w.DisciplineId
-                })
-                .FirstOrDefaultAsync();
+          .Where(w => w.Id == id)
+          .Select(w => new WorkloadDto
+     {
+         Id = w.Id,
+         Hours = w.Hours,
+         TeacherId = w.TeacherId,
+         DisciplineId = w.DisciplineId
+     })
+     .FirstOrDefaultAsync();
         }
 
         public async Task<int> CreateWorkloadAsync(WorkloadDto workloadDto)
